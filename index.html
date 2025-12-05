@@ -506,8 +506,19 @@
             .select();
 
           if (error) {
-            // Check if it's a duplicate email error (23505 or 409 conflict)
-            if (error.code === '23505' || error.code === 'PGRST409' || error.message?.includes('duplicate') || error.message?.includes('unique')) {
+            // Log full error for debugging
+            console.log('Supabase error:', JSON.stringify(error, null, 2));
+
+            // Check if it's a duplicate email error (various formats)
+            const isDuplicate = error.code === '23505' ||
+                               error.code === 'PGRST409' ||
+                               error.code === '409' ||
+                               error.message?.toLowerCase().includes('duplicate') ||
+                               error.message?.toLowerCase().includes('unique') ||
+                               error.message?.toLowerCase().includes('already exists') ||
+                               error.details?.toLowerCase().includes('already exists');
+
+            if (isDuplicate) {
               messageEl.className = 'form-message success';
               messageEl.textContent = 'You\'re already in the Sacred Circle. We\'ll be in touch soon.';
             } else {
