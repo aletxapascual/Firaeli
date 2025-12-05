@@ -160,12 +160,29 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Email is required' });
     }
 
+    // Send confirmation email to subscriber
     await transporter.sendMail({
       from: `"FIRAELI" <${process.env.SMTP_FROM || process.env.SMTP_USER}>`,
       to: email,
       subject: 'Welcome to the Sacred Circle',
       text: 'Welcome to FIRAELI\'s Sacred Circle. Your flame awaits.',
       html: emailHtml,
+    });
+
+    // Send notification email to Kari
+    await transporter.sendMail({
+      from: `"FIRAELI" <${process.env.SMTP_FROM || process.env.SMTP_USER}>`,
+      to: 'kari@firaeli.com',
+      subject: 'New Sacred Circle Subscriber',
+      text: `New subscriber: ${email}`,
+      html: `
+        <div style="font-family: Georgia, serif; padding: 30px; background-color: #050505; color: #F5F5F0;">
+          <h2 style="color: #C8A25D; font-weight: normal; letter-spacing: 0.2em;">New Subscriber</h2>
+          <p style="color: #E8C6B0; font-size: 16px;">A new soul has joined the Sacred Circle:</p>
+          <p style="color: #C8A25D; font-size: 18px; padding: 15px; background: rgba(200, 162, 93, 0.1); border-left: 2px solid #C8A25D;">${email}</p>
+          <p style="color: rgba(232, 198, 176, 0.6); font-size: 14px; margin-top: 30px;">— FIRAELI</p>
+        </div>
+      `,
     });
 
     return res.status(200).json({ success: true });
