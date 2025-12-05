@@ -25,10 +25,10 @@ const emailHtml = `
       <td align="center" style="padding: 40px 20px;">
         <table role="presentation" width="600" cellspacing="0" cellpadding="0" style="max-width: 600px; background: linear-gradient(135deg, #0D0D0D 0%, #050505 100%); border: 1px solid rgba(200, 162, 93, 0.2);">
 
-          <!-- Header with Logo -->
+          <!-- Header -->
           <tr>
             <td align="center" style="padding: 50px 40px 30px 40px;">
-              <img src="https://res.cloudinary.com/dku1gnuat/image/upload/v1749174180/Logo2_2_nsvvpn.png" alt="FIRAELI" style="height: 50px; width: auto;" />
+              <h1 style="font-family: Georgia, serif; font-size: 28px; letter-spacing: 0.3em; color: #C8A25D; margin: 0; font-weight: normal;">FIRAELI</h1>
             </td>
           </tr>
 
