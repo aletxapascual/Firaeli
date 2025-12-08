@@ -276,12 +276,11 @@
           <tr>
             <th align="left">Email</th>
             <th align="left">Source</th>
-            <th align="left">Added</th>
           </tr>
         </thead>
         <tbody id="subscriberRows">
           <tr>
-            <td colspan="3" class="empty">Loading subscribers from Supabase...</td>
+            <td colspan="2" class="empty">Loading subscribers from Supabase...</td>
           </tr>
         </tbody>
       </table>
@@ -321,7 +320,7 @@
 
       const renderRows = (list) => {
         if (!list.length) {
-          rowsEl.innerHTML = '<tr><td colspan="3" class="empty">No subscribers match your filter.</td></tr>';
+          rowsEl.innerHTML = '<tr><td colspan="2" class="empty">No subscribers match your filter.</td></tr>';
           return;
         }
 
@@ -332,7 +331,6 @@
               <tr>
                 <td class="email">${item.email}</td>
                 <td><span class="source-pill">${sourceLabel}</span></td>
-                <td>${formatDate(item.created_at)}</td>
               </tr>
             `;
           })
@@ -359,15 +357,15 @@
 
         const { data, error } = await supabase
           .from('email_subscribers')
-          .select('id,email,source,created_at')
-          .order('created_at', { ascending: false });
+          .select('id,email,source')
+          .order('id', { ascending: false });
 
         refreshBtn.disabled = false;
 
         if (error) {
           console.error('Supabase fetch failed:', error);
           setStatus('Unable to pull data from Supabase.', 'error');
-          rowsEl.innerHTML = '<tr><td colspan="3" class="empty">Failed to load subscribers. Try refreshing.</td></tr>';
+          rowsEl.innerHTML = '<tr><td colspan="2" class="empty">Failed to load subscribers. Try refreshing.</td></tr>';
           totalCountEl.textContent = '—';
           visibleCountEl.textContent = '0';
           return;
