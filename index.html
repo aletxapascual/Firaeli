@@ -105,10 +105,10 @@
 
       .landing-label {
         font-family: 'Tenor Sans', sans-serif;
-        font-size: 0.65rem;
+        font-size: 0.75rem;
         letter-spacing: 0.5em;
         text-transform: uppercase;
-        color: rgba(200, 162, 93, 0.7);
+        color: #FFFFFF;
         margin-bottom: 2rem;
       }
 
@@ -116,7 +116,7 @@
         font-family: 'Italiana', serif;
         font-size: clamp(2.5rem, 5vw, 4.5rem);
         letter-spacing: 0.15em;
-        color: var(--text-light);
+        color: #FFFFFF;
         margin-bottom: 1rem;
         line-height: 0.95;
       }
@@ -125,7 +125,7 @@
         font-family: 'Italiana', serif;
         font-size: clamp(1.8rem, 3vw, 2.8rem);
         letter-spacing: 0.1em;
-        color: var(--divine-gold);
+        color: #FFFFFF;
         margin-bottom: 3rem;
         line-height: 1;
       }
@@ -330,6 +330,7 @@
           z-index: 0;
         }
 
+        .landing-visual img,
         .landing-visual video {
           position: absolute;
           inset: 0;
@@ -404,6 +405,7 @@
       .landing-description,
       .landing-benefits,
       .landing-form {
+        opacity: 1;
         animation: fadeInUp 0.8s ease forwards;
       }
 
@@ -414,13 +416,1503 @@
       .landing-description { animation-delay: 0.5s; }
       .landing-benefits { animation-delay: 0.6s; }
       .landing-form { animation-delay: 0.7s; }
+
+      /* ========== SENSUAL FIRE ANIMATIONS ========== */
+
+      /* Floating Embers Container */
+      .embers-container {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 1000;
+        overflow: hidden;
+      }
+
+      .ember {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: radial-gradient(circle, var(--divine-gold) 0%, transparent 70%);
+        border-radius: 50%;
+        filter: blur(1px);
+        animation: floatEmber 8s ease-in-out infinite;
+      }
+
+      @keyframes floatEmber {
+        0% {
+          transform: translateY(100vh) translateX(0) scale(0);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+          transform: translateY(90vh) translateX(10px) scale(1);
+        }
+        50% {
+          opacity: 0.8;
+          transform: translateY(50vh) translateX(-20px) scale(0.8);
+        }
+        90% {
+          opacity: 0.3;
+          transform: translateY(10vh) translateX(15px) scale(0.4);
+        }
+        100% {
+          transform: translateY(-10vh) translateX(0) scale(0);
+          opacity: 0;
+        }
+      }
+
+      /* Fire Border Glow */
+      .fire-border {
+        position: relative;
+      }
+
+      .fire-border::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(90deg,
+          transparent 0%,
+          var(--molten-copper) 20%,
+          var(--divine-gold) 50%,
+          var(--molten-copper) 80%,
+          transparent 100%
+        );
+        animation: fireBorderGlow 3s ease-in-out infinite;
+      }
+
+      @keyframes fireBorderGlow {
+        0%, 100% {
+          opacity: 0.5;
+          filter: blur(2px);
+        }
+        50% {
+          opacity: 1;
+          filter: blur(4px);
+        }
+      }
+
+      /* Animated Flame SVG */
+      .flame-svg {
+        position: absolute;
+        width: 60px;
+        height: 80px;
+        opacity: 0.6;
+        pointer-events: none;
+      }
+
+      .flame-svg path {
+        fill: var(--divine-gold);
+        animation: flameDance 2s ease-in-out infinite;
+      }
+
+      @keyframes flameDance {
+        0%, 100% {
+          d: path("M30 80 Q20 50 30 20 Q35 40 40 20 Q50 50 30 80");
+          opacity: 0.6;
+        }
+        25% {
+          d: path("M30 80 Q15 55 28 18 Q38 45 45 22 Q55 52 30 80");
+          opacity: 0.8;
+        }
+        50% {
+          d: path("M30 80 Q22 48 32 15 Q32 42 38 18 Q48 48 30 80");
+          opacity: 0.7;
+        }
+        75% {
+          d: path("M30 80 Q18 52 26 20 Q36 38 42 20 Q52 50 30 80");
+          opacity: 0.9;
+        }
+      }
+
+      /* Corner Flames */
+      .corner-flame {
+        position: fixed;
+        pointer-events: none;
+        z-index: 999;
+        opacity: 0.4;
+      }
+
+      .corner-flame-bl {
+        bottom: 0;
+        left: 0;
+        width: 150px;
+        height: 200px;
+        background: radial-gradient(ellipse at bottom left, rgba(200, 162, 93, 0.3) 0%, rgba(181, 105, 79, 0.1) 40%, transparent 70%);
+        animation: cornerFlameLeft 4s ease-in-out infinite;
+      }
+
+      .corner-flame-br {
+        bottom: 0;
+        right: 0;
+        width: 150px;
+        height: 200px;
+        background: radial-gradient(ellipse at bottom right, rgba(200, 162, 93, 0.3) 0%, rgba(181, 105, 79, 0.1) 40%, transparent 70%);
+        animation: cornerFlameRight 4s ease-in-out infinite 0.5s;
+      }
+
+      @keyframes cornerFlameLeft {
+        0%, 100% {
+          transform: scaleY(1) translateX(0);
+          opacity: 0.3;
+        }
+        50% {
+          transform: scaleY(1.2) translateX(10px);
+          opacity: 0.5;
+        }
+      }
+
+      @keyframes cornerFlameRight {
+        0%, 100% {
+          transform: scaleY(1) translateX(0);
+          opacity: 0.3;
+        }
+        50% {
+          transform: scaleY(1.2) translateX(-10px);
+          opacity: 0.5;
+        }
+      }
+
+      /* Heat Shimmer Effect */
+      .heat-shimmer {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .heat-shimmer::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 300%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent 0%,
+          rgba(200, 162, 93, 0.03) 25%,
+          rgba(200, 162, 93, 0.08) 50%,
+          rgba(200, 162, 93, 0.03) 75%,
+          transparent 100%
+        );
+        animation: heatWave 8s linear infinite;
+        pointer-events: none;
+      }
+
+      @keyframes heatWave {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(33.33%); }
+      }
+
+      /* Glowing Text Effect */
+      .fire-text {
+        text-shadow:
+          0 0 10px rgba(200, 162, 93, 0.5),
+          0 0 20px rgba(200, 162, 93, 0.3),
+          0 0 30px rgba(181, 105, 79, 0.2);
+        animation: fireTextGlow 3s ease-in-out infinite;
+      }
+
+      @keyframes fireTextGlow {
+        0%, 100% {
+          text-shadow:
+            0 0 10px rgba(200, 162, 93, 0.5),
+            0 0 20px rgba(200, 162, 93, 0.3),
+            0 0 30px rgba(181, 105, 79, 0.2);
+        }
+        50% {
+          text-shadow:
+            0 0 15px rgba(200, 162, 93, 0.7),
+            0 0 30px rgba(200, 162, 93, 0.5),
+            0 0 45px rgba(181, 105, 79, 0.3);
+        }
+      }
+
+      /* Flame Line Dividers */
+      .flame-divider {
+        position: relative;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 2rem 0;
+      }
+
+      .flame-divider svg {
+        height: 40px;
+        width: auto;
+        color: var(--divine-gold);
+        animation: flameDividerPulse 2s ease-in-out infinite;
+      }
+
+      @keyframes flameDividerPulse {
+        0%, 100% {
+          opacity: 0.6;
+          transform: scale(1);
+          filter: drop-shadow(0 0 5px rgba(200, 162, 93, 0.5));
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.1);
+          filter: drop-shadow(0 0 15px rgba(200, 162, 93, 0.8));
+        }
+      }
+
+
+      /* Intense Ember Burst on Scroll */
+      .ember-burst {
+        position: absolute;
+        pointer-events: none;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      /* Breathing Glow on Content Side */
+      .landing-content::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 150%;
+        height: 150%;
+        background: radial-gradient(ellipse at center, rgba(200, 162, 93, 0.08) 0%, transparent 60%);
+        animation: breatheGlow 6s ease-in-out infinite;
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      @keyframes breatheGlow {
+        0%, 100% {
+          opacity: 0.5;
+          transform: translate(-50%, -50%) scale(1);
+        }
+        50% {
+          opacity: 1;
+          transform: translate(-50%, -50%) scale(1.1);
+        }
+      }
+
+      /* Undulating Divider - Silk Ribbon Effect */
+      .landing-divider {
+        position: relative;
+        background: linear-gradient(90deg, transparent, var(--divine-gold), transparent);
+        animation: ribbonFlow 4s ease-in-out infinite;
+        overflow: visible;
+      }
+
+      .landing-divider::before {
+        content: '';
+        position: absolute;
+        inset: -2px;
+        background: linear-gradient(90deg, transparent, rgba(200, 162, 93, 0.6), transparent);
+        filter: blur(4px);
+        animation: ribbonGlow 4s ease-in-out infinite;
+      }
+
+      @keyframes ribbonFlow {
+        0%, 100% {
+          width: 60px;
+          transform: translateX(0);
+        }
+        50% {
+          width: 80px;
+          transform: translateX(10px);
+        }
+      }
+
+      @keyframes ribbonGlow {
+        0%, 100% {
+          opacity: 0.5;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+
+      /* Soft Text Float - applied after fadeInUp completes */
+      @keyframes softFloat {
+        0%, 100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-5px);
+        }
+      }
+
+      /* Logo Flame Flicker */
+      .landing-logo {
+        animation: flameFlicker 3s ease-in-out infinite;
+      }
+
+      @keyframes flameFlicker {
+        0%, 100% {
+          filter: drop-shadow(0 4px 16px rgba(200, 162, 93, 0.3));
+          transform: scale(1);
+        }
+        25% {
+          filter: drop-shadow(0 4px 20px rgba(200, 162, 93, 0.5));
+          transform: scale(1.02);
+        }
+        50% {
+          filter: drop-shadow(0 4px 24px rgba(181, 105, 79, 0.4));
+          transform: scale(1);
+        }
+        75% {
+          filter: drop-shadow(0 4px 18px rgba(200, 162, 93, 0.45));
+          transform: scale(1.01);
+        }
+      }
+
+      /* Pulsing Form Glow */
+      .landing-input {
+        animation: inputPulse 4s ease-in-out infinite;
+      }
+
+      @keyframes inputPulse {
+        0%, 100% {
+          box-shadow: 0 0 0 0 transparent, inset 0 0 0 0 transparent;
+          border-color: rgba(200, 162, 93, 0.2);
+        }
+        50% {
+          box-shadow: 0 0 20px rgba(200, 162, 93, 0.1), inset 0 0 10px rgba(200, 162, 93, 0.03);
+          border-color: rgba(200, 162, 93, 0.35);
+        }
+      }
+
+      .landing-input:focus {
+        animation: none;
+        box-shadow: 0 0 30px rgba(200, 162, 93, 0.2), inset 0 0 15px rgba(200, 162, 93, 0.05);
+      }
+
+      /* Submit Button Flame Effect */
+      .landing-submit {
+        position: relative;
+        overflow: visible;
+      }
+
+      .landing-submit::before {
+        content: '';
+        position: absolute;
+        inset: -3px;
+        background: linear-gradient(90deg, var(--divine-gold), var(--molten-copper), var(--divine-gold));
+        border-radius: 2px;
+        z-index: -1;
+        opacity: 0;
+        filter: blur(8px);
+        animation: buttonFlame 3s ease-in-out infinite;
+      }
+
+      @keyframes buttonFlame {
+        0%, 100% {
+          opacity: 0.3;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.6;
+          transform: scale(1.05);
+        }
+      }
+
+      .landing-submit:hover::before {
+        opacity: 0.8;
+        animation: buttonFlameHover 1.5s ease-in-out infinite;
+      }
+
+      @keyframes buttonFlameHover {
+        0%, 100% {
+          opacity: 0.8;
+          transform: scale(1.05);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.1);
+        }
+      }
+
+      /* Slow Gradient Background Shift */
+      .landing-content {
+        background: linear-gradient(135deg, rgba(7, 7, 7, 1) 0%, var(--bg-darker) 100%);
+        animation: gradientShift 12s ease-in-out infinite;
+        background-size: 200% 200%;
+      }
+
+      @keyframes gradientShift {
+        0%, 100% {
+          background-position: 0% 50%;
+          background-image: linear-gradient(135deg, rgba(7, 7, 7, 1) 0%, var(--bg-darker) 50%, rgba(20, 15, 10, 1) 100%);
+        }
+        33% {
+          background-position: 50% 100%;
+          background-image: linear-gradient(135deg, rgba(10, 8, 5, 1) 0%, var(--bg-darker) 50%, rgba(15, 10, 8, 1) 100%);
+        }
+        66% {
+          background-position: 100% 50%;
+          background-image: linear-gradient(135deg, rgba(12, 10, 7, 1) 0%, var(--bg-darker) 50%, rgba(7, 7, 7, 1) 100%);
+        }
+      }
+
+      /* Benefits List Subtle Animation */
+      .landing-benefits li {
+        animation: fadeInUp 0.8s ease forwards, benefitGlow 5s ease-in-out infinite;
+        animation-delay: calc(0.6s + var(--i, 0) * 0.1s), calc(1s + var(--i, 0) * 0.5s);
+      }
+
+      .landing-benefits li:nth-child(1) { --i: 0; }
+      .landing-benefits li:nth-child(2) { --i: 1; }
+      .landing-benefits li:nth-child(3) { --i: 2; }
+      .landing-benefits li:nth-child(4) { --i: 3; }
+
+      @keyframes benefitGlow {
+        0%, 100% {
+          color: rgba(232, 198, 176, 0.75);
+        }
+        50% {
+          color: rgba(232, 198, 176, 0.9);
+        }
+      }
+
+      .landing-benefits li::before {
+        animation: starPulse 2s ease-in-out infinite;
+        animation-delay: calc(var(--i, 0) * 0.3s);
+      }
+
+      @keyframes starPulse {
+        0%, 100% {
+          opacity: 0.7;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.3);
+        }
+      }
+
+      /* Mantra Ethereal Animation */
+      .landing-mantra {
+        animation: fadeInUp 0.8s ease forwards, mantraBreath 8s ease-in-out infinite 1s;
+      }
+
+      @keyframes mantraBreath {
+        0%, 100% {
+          opacity: 0.35;
+          letter-spacing: 0.03em;
+        }
+        50% {
+          opacity: 0.55;
+          letter-spacing: 0.05em;
+        }
+      }
+
+      /* Label Shimmer */
+      .landing-label {
+        background: linear-gradient(90deg, #FFFFFF 0%, #C8A25D 50%, #FFFFFF 100%);
+        background-size: 200% 100%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: fadeInUp 0.8s ease forwards, shimmer 4s ease-in-out infinite 1s;
+      }
+
+      @keyframes shimmer {
+        0%, 100% {
+          background-position: -100% 0;
+        }
+        50% {
+          background-position: 100% 0;
+        }
+      }
+
+      /* Mobile adjustments for animations */
+      @media (max-width: 768px) {
+        .embers-container .ember {
+          width: 3px;
+          height: 3px;
+        }
+      }
+
+      /* ========== NEW SECTIONS ========== */
+
+      /* Section Base Styles */
+      .section {
+        padding: 8rem 4rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .section-dark {
+        background: var(--bg-darker);
+      }
+
+      .section-warm {
+        background: linear-gradient(180deg, rgba(20, 15, 10, 1) 0%, var(--bg-darker) 100%);
+      }
+
+      .section-content {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .section-label {
+        font-family: 'Tenor Sans', sans-serif;
+        font-size: 0.65rem;
+        letter-spacing: 0.5em;
+        text-transform: uppercase;
+        color: rgba(200, 162, 93, 0.7);
+        margin-bottom: 1.5rem;
+        display: block;
+      }
+
+      .section-title {
+        font-family: 'Italiana', serif;
+        font-size: clamp(2rem, 4vw, 3.5rem);
+        letter-spacing: 0.1em;
+        color: var(--text-light);
+        margin-bottom: 2rem;
+        line-height: 1.1;
+      }
+
+      .section-subtitle {
+        font-family: 'Italiana', serif;
+        font-size: clamp(1.5rem, 2.5vw, 2rem);
+        color: var(--divine-gold);
+        margin-bottom: 1rem;
+      }
+
+      .section-text {
+        font-family: 'Lora', serif;
+        font-size: 1.1rem;
+        line-height: 1.9;
+        color: var(--blush-nude);
+        max-width: 600px;
+      }
+
+      .section-divider {
+        width: 60px;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--divine-gold), transparent);
+        margin: 3rem 0;
+        animation: ribbonFlow 4s ease-in-out infinite;
+      }
+
+      /* Scroll Reveal Animation */
+      .reveal {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .reveal-delay-1 { transition-delay: 0.1s; }
+      .reveal-delay-2 { transition-delay: 0.2s; }
+      .reveal-delay-3 { transition-delay: 0.3s; }
+      .reveal-delay-4 { transition-delay: 0.4s; }
+
+      /* ========== PHILOSOPHY SECTION ========== */
+      .philosophy-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 6rem;
+        align-items: center;
+      }
+
+      .philosophy-visual {
+        position: relative;
+        height: 500px;
+      }
+
+      .philosophy-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(0.8) saturate(0.9);
+      }
+
+      .philosophy-frame {
+        position: absolute;
+        inset: 20px;
+        border: 1px solid rgba(200, 162, 93, 0.3);
+        pointer-events: none;
+      }
+
+      .philosophy-frame::before {
+        content: '';
+        position: absolute;
+        top: -1px;
+        left: 30%;
+        right: 30%;
+        height: 1px;
+        background: var(--divine-gold);
+      }
+
+      .philosophy-accent {
+        position: absolute;
+        bottom: -20px;
+        right: -20px;
+        width: 150px;
+        height: 150px;
+        border: 1px solid rgba(200, 162, 93, 0.2);
+        animation: accentPulse 6s ease-in-out infinite;
+      }
+
+      @keyframes accentPulse {
+        0%, 100% { opacity: 0.3; transform: scale(1); }
+        50% { opacity: 0.6; transform: scale(1.05); }
+      }
+
+      .philosophy-quote {
+        font-family: 'Lora', serif;
+        font-size: 1.4rem;
+        font-style: italic;
+        color: rgba(232, 198, 176, 0.9);
+        line-height: 1.8;
+        margin-top: 2rem;
+        padding-left: 2rem;
+        border-left: 2px solid var(--divine-gold);
+      }
+
+      /* ========== ARCHETYPES SECTION ========== */
+      .archetypes-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+        margin-top: 4rem;
+      }
+
+      .archetype-card {
+        position: relative;
+        padding: 3rem 2rem;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(200, 162, 93, 0.15);
+        text-align: center;
+        transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        overflow: hidden;
+      }
+
+      .archetype-card::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse at center bottom, rgba(200, 162, 93, 0.1) 0%, transparent 70%);
+        opacity: 0;
+        transition: opacity 0.6s ease;
+      }
+
+      .archetype-card:hover {
+        transform: translateY(-10px);
+        border-color: rgba(200, 162, 93, 0.4);
+        box-shadow: 0 20px 60px rgba(200, 162, 93, 0.15);
+      }
+
+      .archetype-card:hover::before {
+        opacity: 1;
+      }
+
+      .archetype-symbol {
+        width: 48px;
+        height: 48px;
+        margin: 0 auto 1.5rem;
+        display: block;
+        color: var(--divine-gold);
+        animation: symbolFloat 4s ease-in-out infinite;
+      }
+
+      .archetype-symbol svg {
+        width: 100%;
+        height: 100%;
+      }
+
+      @keyframes symbolFloat {
+        0%, 100% { transform: translateY(0) rotate(0deg); }
+        50% { transform: translateY(-8px) rotate(3deg); }
+      }
+
+      .archetype-card:nth-child(2) .archetype-symbol { animation-delay: 0.5s; }
+      .archetype-card:nth-child(3) .archetype-symbol { animation-delay: 1s; }
+      .archetype-card:nth-child(4) .archetype-symbol { animation-delay: 1.5s; }
+
+      .archetype-name {
+        font-family: 'Italiana', serif;
+        font-size: 1.5rem;
+        color: var(--text-light);
+        letter-spacing: 0.1em;
+        margin-bottom: 1rem;
+      }
+
+      .archetype-essence {
+        font-family: 'Lora', serif;
+        font-size: 0.9rem;
+        color: var(--divine-gold);
+        font-style: italic;
+        margin-bottom: 1rem;
+      }
+
+      .archetype-description {
+        font-family: 'Lora', serif;
+        font-size: 0.85rem;
+        color: rgba(232, 198, 176, 0.7);
+        line-height: 1.7;
+      }
+
+      .archetype-scent {
+        font-family: 'Tenor Sans', sans-serif;
+        font-size: 0.7rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: rgba(200, 162, 93, 0.5);
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(200, 162, 93, 0.15);
+      }
+
+      /* ========== RITUAL SECTION ========== */
+      .ritual-section {
+        text-align: center;
+      }
+
+      .ritual-steps {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 4rem;
+        margin-top: 5rem;
+      }
+
+      .ritual-step {
+        position: relative;
+      }
+
+      .ritual-number {
+        font-family: 'Italiana', serif;
+        font-size: 5rem;
+        color: rgba(200, 162, 93, 0.15);
+        position: absolute;
+        top: -2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 0;
+      }
+
+      .ritual-icon {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 2rem;
+        border: 1px solid rgba(200, 162, 93, 0.3);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 1;
+        animation: iconBreathe 4s ease-in-out infinite;
+      }
+
+      @keyframes iconBreathe {
+        0%, 100% {
+          box-shadow: 0 0 0 0 rgba(200, 162, 93, 0);
+          transform: scale(1);
+        }
+        50% {
+          box-shadow: 0 0 30px rgba(200, 162, 93, 0.2);
+          transform: scale(1.05);
+        }
+      }
+
+      .ritual-step:nth-child(2) .ritual-icon { animation-delay: 0.5s; }
+      .ritual-step:nth-child(3) .ritual-icon { animation-delay: 1s; }
+
+      .ritual-icon svg {
+        width: 32px;
+        height: 32px;
+        stroke: var(--divine-gold);
+        fill: none;
+        stroke-width: 1.5;
+      }
+
+      .ritual-title {
+        font-family: 'Italiana', serif;
+        font-size: 1.4rem;
+        color: var(--text-light);
+        letter-spacing: 0.1em;
+        margin-bottom: 1rem;
+      }
+
+      .ritual-text {
+        font-family: 'Lora', serif;
+        font-size: 0.95rem;
+        color: rgba(232, 198, 176, 0.75);
+        line-height: 1.8;
+        max-width: 280px;
+        margin: 0 auto;
+      }
+
+      /* Connection line between steps */
+      .ritual-steps::before {
+        content: '';
+        position: absolute;
+        top: 40px;
+        left: 20%;
+        right: 20%;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(200, 162, 93, 0.3), rgba(200, 162, 93, 0.3), transparent);
+      }
+
+      /* ========== ORIGIN SECTION ========== */
+      .origin-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 6rem;
+        align-items: center;
+      }
+
+      .origin-content {
+        order: 2;
+      }
+
+      .origin-visual {
+        order: 1;
+        position: relative;
+      }
+
+      .origin-image {
+        width: 100%;
+        aspect-ratio: 3/4;
+        object-fit: cover;
+        filter: brightness(0.85) saturate(0.9);
+      }
+
+      .origin-signature {
+        font-family: 'Lora', serif;
+        font-style: italic;
+        font-size: 1.2rem;
+        color: var(--divine-gold);
+        margin-top: 2rem;
+      }
+
+      .origin-role {
+        font-family: 'Tenor Sans', sans-serif;
+        font-size: 0.7rem;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: rgba(232, 198, 176, 0.5);
+        margin-top: 0.5rem;
+      }
+
+      /* ========== CTA SECTION ========== */
+      .cta-section {
+        text-align: center;
+        padding: 10rem 4rem;
+        position: relative;
+      }
+
+      .cta-section::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse at center, rgba(200, 162, 93, 0.08) 0%, transparent 60%);
+        animation: ctaGlow 8s ease-in-out infinite;
+      }
+
+      @keyframes ctaGlow {
+        0%, 100% { opacity: 0.5; transform: scale(1); }
+        50% { opacity: 1; transform: scale(1.1); }
+      }
+
+      .cta-title {
+        font-family: 'Italiana', serif;
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        color: var(--text-light);
+        letter-spacing: 0.15em;
+        margin-bottom: 1.5rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .cta-subtitle {
+        font-family: 'Lora', serif;
+        font-size: 1.2rem;
+        color: var(--blush-nude);
+        margin-bottom: 3rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .cta-form {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        max-width: 500px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+      }
+
+      .cta-input {
+        flex: 1;
+        padding: 1.2rem 1.5rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(200, 162, 93, 0.25);
+        font-family: 'Tenor Sans', sans-serif;
+        font-size: 0.85rem;
+        color: var(--text-light);
+        transition: all 0.5s ease;
+      }
+
+      .cta-input::placeholder {
+        color: rgba(232, 198, 176, 0.5);
+      }
+
+      .cta-input:focus {
+        outline: none;
+        border-color: rgba(200, 162, 93, 0.5);
+        box-shadow: 0 0 30px rgba(200, 162, 93, 0.15);
+      }
+
+      .cta-button {
+        font-family: 'Tenor Sans', sans-serif;
+        font-size: 0.7rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        padding: 1.2rem 2.5rem;
+        border: none;
+        background: linear-gradient(90deg, var(--divine-gold) 0%, var(--molten-copper) 100%);
+        color: var(--bg-darker);
+        cursor: pointer;
+        transition: all 0.5s ease;
+        white-space: nowrap;
+      }
+
+      .cta-button:hover {
+        box-shadow: 0 0 40px rgba(200, 162, 93, 0.3);
+        transform: scale(1.02);
+      }
+
+      /* ========== FOOTER ========== */
+      .footer {
+        padding: 4rem;
+        text-align: center;
+        border-top: 1px solid rgba(200, 162, 93, 0.1);
+      }
+
+      .footer-logo {
+        height: 30px;
+        opacity: 0.7;
+        margin-bottom: 2rem;
+        animation: flameFlicker 3s ease-in-out infinite;
+      }
+
+      .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+        margin-bottom: 2rem;
+      }
+
+      .footer-link {
+        font-family: 'Tenor Sans', sans-serif;
+        font-size: 0.7rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: rgba(232, 198, 176, 0.5);
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .footer-link:hover {
+        color: var(--divine-gold);
+      }
+
+      .footer-social {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .footer-social a {
+        width: 40px;
+        height: 40px;
+        border: 1px solid rgba(200, 162, 93, 0.2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+      }
+
+      .footer-social a:hover {
+        border-color: var(--divine-gold);
+        box-shadow: 0 0 20px rgba(200, 162, 93, 0.2);
+      }
+
+      .footer-social svg {
+        width: 16px;
+        height: 16px;
+        stroke: rgba(232, 198, 176, 0.6);
+        fill: none;
+        transition: stroke 0.3s ease;
+      }
+
+      .footer-social a:hover svg {
+        stroke: var(--divine-gold);
+      }
+
+      .footer-copyright {
+        font-family: 'Lora', serif;
+        font-size: 0.8rem;
+        color: rgba(232, 198, 176, 0.35);
+      }
+
+      .footer-mantra {
+        font-family: 'Lora', serif;
+        font-size: 0.85rem;
+        font-style: italic;
+        color: rgba(232, 198, 176, 0.25);
+        margin-top: 1.5rem;
+      }
+
+      /* ========== VESSEL/PRODUCT SECTION ========== */
+      .vessel-section {
+        text-align: center;
+      }
+
+      .vessel-showcase {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 4rem;
+        margin-top: 4rem;
+      }
+
+      .vessel-image-container {
+        position: relative;
+        flex: 0 0 auto;
+      }
+
+      .vessel-image {
+        max-width: 400px;
+        height: auto;
+        filter: brightness(1.05);
+        animation: vesselFloat 6s ease-in-out infinite;
+      }
+
+      @keyframes vesselFloat {
+        0%, 100% { transform: translateY(0) rotate(0deg); }
+        50% { transform: translateY(-15px) rotate(1deg); }
+      }
+
+      .vessel-glow {
+        position: absolute;
+        inset: -50px;
+        background: radial-gradient(ellipse at center, rgba(200, 162, 93, 0.15) 0%, transparent 70%);
+        animation: vesselGlow 4s ease-in-out infinite;
+        z-index: -1;
+      }
+
+      @keyframes vesselGlow {
+        0%, 100% { opacity: 0.5; transform: scale(1); }
+        50% { opacity: 1; transform: scale(1.1); }
+      }
+
+      .vessel-details {
+        text-align: left;
+        max-width: 450px;
+      }
+
+      .vessel-details .section-text {
+        margin-bottom: 1.5rem;
+      }
+
+      .vessel-features {
+        list-style: none;
+        margin-top: 2rem;
+      }
+
+      .vessel-features li {
+        font-family: 'Lora', serif;
+        font-size: 0.95rem;
+        color: rgba(232, 198, 176, 0.8);
+        margin-bottom: 1rem;
+        padding-left: 2rem;
+        position: relative;
+      }
+
+      .vessel-features li::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 8px;
+        height: 8px;
+        background: var(--divine-gold);
+        border-radius: 50%;
+        animation: featurePulse 2s ease-in-out infinite;
+      }
+
+      .vessel-features li:nth-child(2)::before { animation-delay: 0.3s; }
+      .vessel-features li:nth-child(3)::before { animation-delay: 0.6s; }
+      .vessel-features li:nth-child(4)::before { animation-delay: 0.9s; }
+
+      @keyframes featurePulse {
+        0%, 100% { opacity: 0.5; transform: translateY(-50%) scale(1); }
+        50% { opacity: 1; transform: translateY(-50%) scale(1.3); }
+      }
+
+      /* ========== TESTIMONIALS SECTION ========== */
+      .testimonials-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        margin-top: 4rem;
+        height: 600px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .testimonials-wrapper::before,
+      .testimonials-wrapper::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 100px;
+        z-index: 10;
+        pointer-events: none;
+      }
+
+      .testimonials-wrapper::before {
+        top: 0;
+        background: linear-gradient(to bottom, var(--bg-darker) 0%, transparent 100%);
+      }
+
+      .testimonials-wrapper::after {
+        bottom: 0;
+        background: linear-gradient(to top, var(--bg-darker) 0%, transparent 100%);
+      }
+
+      .testimonials-column {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .testimonials-scroll {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        animation: scrollUp 40s linear infinite;
+      }
+
+      .testimonials-column:nth-child(2) .testimonials-scroll {
+        animation: scrollDown 40s linear infinite;
+      }
+
+      @keyframes scrollUp {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(-50%); }
+      }
+
+      @keyframes scrollDown {
+        0% { transform: translateY(-50%); }
+        100% { transform: translateY(0); }
+      }
+
+      .testimonials-column:hover .testimonials-scroll {
+        animation-play-state: paused;
+      }
+
+      .testimonial-card {
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(200, 162, 93, 0.15);
+        position: relative;
+        transition: all 0.5s ease;
+        flex-shrink: 0;
+      }
+
+      .testimonial-card:hover {
+        border-color: rgba(200, 162, 93, 0.3);
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .testimonial-card::before {
+        content: '"';
+        position: absolute;
+        top: 0.5rem;
+        left: 1rem;
+        font-family: 'Italiana', serif;
+        font-size: 3rem;
+        color: rgba(200, 162, 93, 0.2);
+        line-height: 1;
+      }
+
+      .testimonial-text {
+        font-family: 'Lora', serif;
+        font-size: 0.95rem;
+        font-style: italic;
+        color: var(--blush-nude);
+        line-height: 1.7;
+        margin-bottom: 1.25rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .testimonial-author {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .testimonial-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--divine-gold), var(--molten-copper));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Italiana', serif;
+        font-size: 1rem;
+        color: var(--bg-darker);
+      }
+
+      .testimonial-info h4 {
+        font-family: 'Tenor Sans', sans-serif;
+        font-size: 0.8rem;
+        letter-spacing: 0.1em;
+        color: var(--text-light);
+        margin-bottom: 0.2rem;
+      }
+
+      .testimonial-info span {
+        font-family: 'Lora', serif;
+        font-size: 0.75rem;
+        color: rgba(200, 162, 93, 0.7);
+      }
+
+      .testimonial-stars {
+        color: var(--divine-gold);
+        font-size: 0.8rem;
+        letter-spacing: 0.15em;
+        margin-bottom: 0.75rem;
+      }
+
+      /* ========== FAQ SECTION ========== */
+      .faq-list {
+        max-width: 800px;
+        margin: 4rem auto 0;
+      }
+
+      .faq-item {
+        border-bottom: 1px solid rgba(200, 162, 93, 0.2);
+      }
+
+      .faq-header {
+        width: 100%;
+        padding: 1.5rem 0;
+        background: transparent;
+        border: none;
+        text-align: left;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .faq-header:hover .faq-title {
+        color: var(--divine-gold);
+      }
+
+      .faq-title {
+        font-family: 'Lora', serif;
+        font-size: 1.1rem;
+        color: var(--text-light);
+        font-weight: 400;
+        margin: 0;
+        transition: color 0.3s ease;
+      }
+
+      .faq-toggle {
+        width: 20px;
+        height: 20px;
+        position: relative;
+        flex-shrink: 0;
+      }
+
+      .faq-toggle::before,
+      .faq-toggle::after {
+        content: '';
+        position: absolute;
+        background: var(--divine-gold);
+        transition: transform 0.3s ease;
+      }
+
+      .faq-toggle::before {
+        width: 20px;
+        height: 2px;
+        top: 9px;
+        left: 0;
+      }
+
+      .faq-toggle::after {
+        width: 2px;
+        height: 20px;
+        left: 9px;
+        top: 0;
+      }
+
+      .faq-item.open .faq-toggle::after {
+        transform: rotate(90deg);
+      }
+
+      .faq-body {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: max-height 0.4s ease, opacity 0.3s ease, transform 0.3s ease, padding 0.4s ease;
+        padding: 0;
+      }
+
+      .faq-item.open .faq-body {
+        max-height: 300px;
+        opacity: 1;
+        transform: translateY(0);
+        padding-bottom: 1.5rem;
+      }
+
+      .faq-body p {
+        font-family: 'Lora', serif;
+        font-size: 0.95rem;
+        color: rgba(232, 198, 176, 0.8);
+        line-height: 1.8;
+        margin: 0;
+      }
+
+      .faq-item {
+        transition: background 0.3s ease;
+      }
+
+      .faq-item.open {
+        background: rgba(200, 162, 93, 0.03);
+      }
+
+      .faq-item.open .faq-title {
+        color: var(--divine-gold);
+      }
+
+      /* ========== RESPONSIVE FOR NEW SECTIONS ========== */
+      @media (max-width: 1024px) {
+        .section {
+          padding: 6rem 3rem;
+        }
+
+        .philosophy-section,
+        .origin-section {
+          grid-template-columns: 1fr;
+          gap: 4rem;
+        }
+
+        .philosophy-visual {
+          height: 400px;
+        }
+
+        .archetypes-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .ritual-steps {
+          grid-template-columns: 1fr;
+          gap: 4rem;
+        }
+
+        .ritual-steps::before {
+          display: none;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .section {
+          padding: 5rem 2rem;
+        }
+
+        .archetypes-grid {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+
+        .archetype-card {
+          padding: 2.5rem 2rem;
+        }
+
+        .origin-content {
+          order: 1;
+        }
+
+        .origin-visual {
+          order: 2;
+        }
+
+        .cta-form {
+          flex-direction: column;
+        }
+
+        .cta-button {
+          width: 100%;
+        }
+
+        .footer-links {
+          flex-direction: column;
+          gap: 1.5rem;
+        }
+
+        .vessel-showcase {
+          flex-direction: column;
+          gap: 2rem;
+        }
+
+        .vessel-image {
+          max-width: 280px;
+        }
+
+        .vessel-details {
+          text-align: center;
+        }
+
+        .testimonials-wrapper {
+          grid-template-columns: 1fr;
+          height: 500px;
+        }
+
+        .testimonials-column:nth-child(2) {
+          display: none;
+        }
+
+        .testimonial-card {
+          padding: 1.5rem;
+        }
+      }
     </style>
   </head>
   <body>
+    <!-- Floating Embers -->
+    <div class="embers-container" id="embersContainer"></div>
+
+    <!-- Corner Flames -->
+    <div class="corner-flame corner-flame-bl"></div>
+    <div class="corner-flame corner-flame-br"></div>
+
     <div class="landing-container">
       <!-- Visual Side -->
       <div class="landing-visual">
-        <video autoplay muted loop playsinline>
+        <video autoplay muted playsinline>
           <source src="https://res.cloudinary.com/dku1gnuat/video/upload/v1764896542/BEFORE_Kari_cgchkp.mp4" type="video/mp4">
         </video>
         <div class="landing-visual-overlay"></div>
@@ -429,11 +1921,10 @@
 
       <!-- Content Side -->
       <div class="landing-content">
-        <img src="images/Logo2 (2).png" alt="FIRAELI" class="landing-logo" />
-
+        <img src="images/Firaeli_N Horizontal.png" alt="FIRAELI" class="landing-logo" />
         <div class="landing-label">Join the Sacred Circle</div>
-        <h1 class="landing-title">Light Your</h1>
-        <h2 class="landing-subtitle">Own Flame</h2>
+        <h1 class="landing-title fire-text">Light Your</h1>
+        <h2 class="landing-subtitle fire-text">Own Flame</h2>
         <div class="landing-divider"></div>
 
         <p class="landing-description">
@@ -473,6 +1964,693 @@
         </div>
       </div>
     </div>
+
+    <!-- ========== PHILOSOPHY SECTION ========== -->
+    <section class="section section-warm">
+      <div class="section-content philosophy-section">
+        <div class="philosophy-visual reveal">
+          <img src="images/candles/2.png" alt="FIRAELI Ritual Candle" class="philosophy-image">
+        </div>
+        <div class="philosophy-content">
+          <span class="section-label reveal">Our Philosophy</span>
+          <h2 class="section-title fire-text reveal reveal-delay-1">Fire is the First<br>Language of Desire</h2>
+          <div class="section-divider reveal reveal-delay-2"></div>
+          <p class="section-text reveal reveal-delay-2">
+            Before words, there was warmth. Before touch, there was the glow that drew us closer. FIRAELI was born from the ancient knowing that fire awakens something primal within us—a remembering of pleasure as sacred, of sensuality as divine.
+          </p>
+          <p class="section-text reveal reveal-delay-3" style="margin-top: 1.5rem;">
+            Each vessel is crafted to be more than a candle. It is an invitation to slow down, to breathe deeply, to let the flickering light guide you back to your body and its infinite wisdom.
+          </p>
+          <blockquote class="philosophy-quote reveal reveal-delay-4">
+            "She who tends her own flame becomes magnetic to all she desires."
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== ARCHETYPES SECTION ========== -->
+    <section class="section section-dark">
+      <div class="section-content">
+        <div style="text-align: center; margin-bottom: 2rem;">
+          <span class="section-label reveal">The Sacred Archetypes</span>
+          <h2 class="section-title fire-text reveal reveal-delay-1">Which Flame Calls to You?</h2>
+          <p class="section-text reveal reveal-delay-2" style="margin: 0 auto; max-width: 700px;">
+            Each archetype carries its own essence, its own invitation. These are not just scents—they are doorways to different aspects of your feminine power.
+          </p>
+        </div>
+
+        <div class="archetypes-grid">
+          <div class="archetype-card reveal">
+            <span class="archetype-symbol">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+              </svg>
+            </span>
+            <h3 class="archetype-name">The Lover</h3>
+            <p class="archetype-essence">"I am magnetic"</p>
+            <p class="archetype-description">
+              She who embraces pleasure without apology. Warm, intoxicating, unapologetically sensual. For nights of deep connection.
+            </p>
+            <p class="archetype-scent">Rose Absolute  &middot; Sandalwood &middot; Warm Musk</p>
+          </div>
+
+          <div class="archetype-card reveal reveal-delay-1">
+            <span class="archetype-symbol">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+              </svg>
+            </span>
+            <h3 class="archetype-name">The Mystic</h3>
+            <p class="archetype-essence">"I trust my knowing"</p>
+            <p class="archetype-description">
+              She who walks between worlds. Intuitive, mysterious, deeply connected. For meditation and inner journeys.
+            </p>
+            <p class="archetype-scent">Frankincense &middot; Blue Lotus &middot; Amber</p>
+          </div>
+
+          <div class="archetype-card reveal reveal-delay-2">
+            <span class="archetype-symbol">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 17l10-10 10 10" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 7l-4 4h2v6h4v-6h2L12 7z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="12" cy="4" r="2" stroke="currentColor" stroke-width="1.5" fill="none"/>
+              </svg>
+            </span>
+            <h3 class="archetype-name">The Queen</h3>
+            <p class="archetype-essence">"I am sovereign"</p>
+            <p class="archetype-description">
+              She who knows her worth. Regal, commanding, luxuriously confident. For moments of self-coronation.
+            </p>
+            <p class="archetype-scent">Oud &middot; Black Orchid &middot; Gold Amber</p>
+          </div>
+
+          <div class="archetype-card reveal reveal-delay-3">
+            <span class="archetype-symbol">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C12 2 7 7 7 12c0 3 2.5 5 5 5s5-2 5-5c0-5-5-10-5-10z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                <path d="M12 17c-1.5 0-2.5 1-2.5 2.5S10.5 22 12 22s2.5-1 2.5-2.5S13.5 17 12 17z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+              </svg>
+            </span>
+            <h3 class="archetype-name">The Wild One</h3>
+            <p class="archetype-essence">"I am untamed"</p>
+            <p class="archetype-description">
+              She who dances with chaos. Free, fierce, gloriously unpredictable. For breaking free from the ordinary.
+            </p>
+            <p class="archetype-scent">Black Pepper &middot; Fig &middot; Wild Jasmine</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== RITUAL SECTION ========== -->
+    <section class="section section-warm ritual-section">
+      <div class="section-content">
+        <span class="section-label reveal">The Sacred Ritual</span>
+        <h2 class="section-title fire-text reveal reveal-delay-1">How to Light Your Flame</h2>
+        <p class="section-text reveal reveal-delay-2" style="margin: 0 auto; text-align: center; max-width: 600px;">
+          A FIRAELI ritual is not about rushing to the destination. It is about savoring every moment of becoming.
+        </p>
+
+        <div class="ritual-steps">
+          <div class="ritual-step reveal">
+            <span class="ritual-number">I</span>
+            <div class="ritual-icon">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 6v6l4 2"/>
+              </svg>
+            </div>
+            <h3 class="ritual-title">Create Space</h3>
+            <p class="ritual-text">
+              Dim the lights. Silence notifications. This moment is sacred—a portal between the world's demands and your deepest self.
+            </p>
+          </div>
+
+          <div class="ritual-step reveal reveal-delay-1">
+            <span class="ritual-number">II</span>
+            <div class="ritual-icon">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C12 2 8 6 8 10.5C8 13.5 10 15 12 15C14 15 16 13.5 16 10.5C16 6 12 2 12 2Z"/>
+                <path d="M12 15v7"/>
+              </svg>
+            </div>
+            <h3 class="ritual-title">Ignite with Intention</h3>
+            <p class="ritual-text">
+              As you strike the match, whisper your intention. What do you wish to call in? What are you ready to release?
+            </p>
+          </div>
+
+          <div class="ritual-step reveal reveal-delay-2">
+            <span class="ritual-number">III</span>
+            <div class="ritual-icon">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+              </svg>
+            </div>
+            <h3 class="ritual-title">Surrender to Sensation</h3>
+            <p class="ritual-text">
+              Let the warmth wash over you. Breathe in the sacred scent. Feel your body soften, your heart open, your spirit remember.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== ORIGIN SECTION ========== -->
+    <section class="section section-dark">
+      <div class="section-content origin-section">
+        <div class="origin-visual reveal">
+          <img src="images/candles/1.png" alt="FIRAELI Candle Collection" class="origin-image">
+        </div>
+        <div class="origin-content">
+          <span class="section-label reveal">The Origin</span>
+          <h2 class="section-title reveal reveal-delay-1">Born from a Longing</h2>
+          <div class="section-divider reveal reveal-delay-2"></div>
+          <p class="section-text reveal reveal-delay-2">
+            FIRAELI was born in the quiet hours—those moments when the world sleeps and a woman finally has space to feel. I was searching for something that didn't exist: a luxury that wasn't about impressing others, but about coming home to myself.
+          </p>
+          <p class="section-text reveal reveal-delay-3" style="margin-top: 1.5rem;">
+            I wanted rituals that honored the feminine body. Scents that awakened forgotten parts of myself. Objects so beautiful they reminded me that I, too, deserve beauty.
+          </p>
+          <p class="section-text reveal reveal-delay-4" style="margin-top: 1.5rem;">
+            When I couldn't find it, I created it. FIRAELI is my love letter to every woman who has dimmed her light to make others comfortable. It's time to burn brightly, beloved.
+          </p>
+          <p class="origin-signature reveal reveal-delay-4">With fire and devotion,</p>
+          <p class="origin-role reveal reveal-delay-4">Founder & Flame Keeper</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== VESSEL/PRODUCT SECTION ========== -->
+    <section class="section section-warm vessel-section">
+      <div class="section-content">
+        <span class="section-label reveal">The Sacred Vessel</span>
+        <h2 class="section-title fire-text reveal reveal-delay-1">Art Meets Ritual</h2>
+
+        <div class="vessel-showcase">
+          <div class="vessel-image-container reveal">
+            <div class="vessel-glow"></div>
+            <img src="images/candles/3.png" alt="FIRAELI Sculptural Vessel" class="vessel-image">
+          </div>
+
+          <div class="vessel-details reveal reveal-delay-2">
+            <p class="section-text">
+              Each FIRAELI vessel is a sculptural celebration of feminine form—designed to be displayed long after the flame has faded. Handcrafted from premium materials, these are not mere candles. They are altars for your daily rituals.
+            </p>
+            <p class="section-text">
+              The organic curves and soft textures invite touch, while the form itself becomes a meditation on beauty, sensuality, and the sacred feminine.
+            </p>
+            <ul class="vessel-features">
+              <li>Hand-poured with 100% natural soy wax</li>
+              <li>Lead-free cotton wicks for clean burn</li>
+              <li>40+ hours of burn time</li>
+              <li>Reusable vessel for flowers or keepsakes</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== TESTIMONIALS SECTION ========== -->
+    <section class="section section-dark">
+      <div class="section-content">
+        <div style="text-align: center;">
+          <span class="section-label reveal">Sacred Circle Voices</span>
+          <h2 class="section-title fire-text reveal reveal-delay-1">What Our Community Says</h2>
+        </div>
+
+        <div class="testimonials-wrapper">
+          <!-- Column 1 - Scrolls Up -->
+          <div class="testimonials-column">
+            <div class="testimonials-scroll">
+              <div class="testimonial-card">
+                <div class="testimonial-stars">*****</div>
+                <p class="testimonial-text">"The moment I lit my first FIRAELI candle, I understood. This isn't just a candle—it's permission to slow down, to feel, to remember who I am."</p>
+                <div class="testimonial-author">
+                  <div class="testimonial-avatar">S</div>
+                  <div class="testimonial-info"><h4>Sarah M.</h4><span>The Lover Collection</span></div>
+                </div>
+              </div>
+
+              <div class="testimonial-card">
+                <div class="testimonial-stars">*****</div>
+                <p class="testimonial-text">"My evening ritual is now sacred. The vessel is so beautiful I keep it on my altar even after the candle is done."</p>
+                <div class="testimonial-author">
+                  <div class="testimonial-avatar">M</div>
+                  <div class="testimonial-info"><h4>Maya R.</h4><span>The Queen Collection</span></div>
+                </div>
+              </div>
+
+              <div class="testimonial-card">
+                <div class="testimonial-stars">*****</div>
+                <p class="testimonial-text">"I bought The Mystic for my meditation practice. The scent transports me instantly. It's become an essential part of my spiritual routine."</p>
+                <div class="testimonial-author">
+                  <div class="testimonial-avatar">L</div>
+                  <div class="testimonial-info"><h4>Luna C.</h4><span>The Mystic Collection</span></div>
+                </div>
+              </div>
+
+              <div class="testimonial-card">
+                <div class="testimonial-stars">*****</div>
+                <p class="testimonial-text">"Finally, a brand that understands feminine luxury isn't about showing off—it's about honoring yourself. Obsessed."</p>
+                <div class="testimonial-author">
+                  <div class="testimonial-avatar">J</div>
+                  <div class="testimonial-info"><h4>Jessica T.</h4><span>The Wild One Collection</span></div>
+                </div>
+              </div>
+
+              <div class="testimonial-card">
+                <div class="testimonial-stars">*****</div>
+                <p class="testimonial-text">"The packaging alone made me cry. So much thought and love in every detail. This is what luxury should feel like."</p>
+                <div class="testimonial-author">
+                  <div class="testimonial-avatar">R</div>
+                  <div class="testimonial-info"><h4>Rachel B.</h4><span>The Lover Collection</span></div>
+                </div>
+              </div>
+
+              <div class="testimonial-card">
+                <div class="testimonial-stars">*****</div>
+                <p class="testimonial-text">"I gift these to every woman in my life. It's more than a candle—it's telling someone they deserve beauty and ritual."</p>
+                <div class="testimonial-author">
+                  <div class="testimonial-avatar">K</div>
+                  <div class="testimonial-info"><h4>Kira N.</h4><span>The Queen Collection</span></div>
+                </div>
+              </div>
+
+              <!-- Duplicate for seamless loop -->
+              <div class="testimonial-card">
+                <div class="testimonial-stars">*****</div>
+                <p class="testimonial-text">"The moment I lit my first FIRAELI candle, I understood. This isn't just a candle—it's permission to slow down, to feel, to remember who I am."</p>
+                <div class="testimonial-author">
+                  <div class="testimonial-avatar">S</div>
+                  <div class="testimonial-info"><h4>Sarah M.</h4><span>The Lover Collection</span></div>
+                </div>
+              </div>
+
+              <div class="testimonial-card">
+                <div class="testimonial-stars">*****</div>
+                <p class="testimonial-text">"My evening ritual is now sacred. The vessel is so beautiful I keep it on my altar even after the candle is done."</p>
+                <div class="testimonial-author">
+                  <div class="testimonial-avatar">M</div>
+                  <div class="testimonial-info"><h4>Maya R.</h4><span>The Queen Collection</span></div>
+                </div>
+              </div>
+
+              <div class="testimonial-card">
+                <div class="testimonial-stars">*****</div>
+                <p class="testimonial-text">"I bought The Mystic for my meditation practice. The scent transports me instantly. It's become an essential part of my spiritual routine."</p>
+                <div class="testimonial-author">
+                  <div class="testimonial-avatar">L</div>
+                  <div class="testimonial-info"><h4>Luna C.</h4><span>The Mystic Collection</span></div>
+                </div>
+              </div>
+
+              <div class="testimonial-card">
+                <div class="testimonial-stars">*****</div>
+                <p class="testimonial-text">"Finally, a brand that understands feminine luxury isn't about showing off—it's about honoring yourself. Obsessed."</p>
+                <div class="testimonial-author">
+                  <div class="testimonial-avatar">J</div>
+                  <div class="testimonial-info"><h4>Jessica T.</h4><span>The Wild One Collection</span></div>
+                </div>
+              </div>
+
+              <div class="testimonial-card">
+                <div class="testimonial-stars">*****</div>
+                <p class="testimonial-text">"The packaging alone made me cry. So much thought and love in every detail. This is what luxury should feel like."</p>
+                <div class="testimonial-author">
+                  <div class="testimonial-avatar">R</div>
+                  <div class="testimonial-info"><h4>Rachel B.</h4><span>The Lover Collection</span></div>
+                </div>
+              </div>
+
+              <div class="testimonial-card">
+                <div class="testimonial-stars">*****</div>
+                <p class="testimonial-text">"I gift these to every woman in my life. It's more than a candle—it's telling someone they deserve beauty and ritual."</p>
+                <div class="testimonial-author">
+                  <div class="testimonial-avatar">K</div>
+                  <div class="testimonial-info"><h4>Kira N.</h4><span>The Queen Collection</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 2 - Scrolls Down -->
+          <div class="testimonials-column">
+            <div class="testimonials-scroll">
+              <div class="testimonial-card">
+                <div class="testimonial-stars">*****</div>
+                <p class="testimonial-text">"I've never felt so seen by a product. The archetype quiz helped me understand myself better, and the scent... it's like it was made for my soul."</p>
+                <div class="testimonial-author">
+                  <div class="testimonial-avatar">A</div>
+                  <div class="testimonial-info"><h4>Amara K.</h4><span>The Mystic Collection</span></div>
+                </div>
+              </div>
+
+              <div class="testimonial-card">
+                <div class="testimonial-stars">*****</div>
+                <p class="testimonial-text">"The Wild One spoke to something untamed in me. Every time I light it, I remember that my fire doesn't need to be contained."</p>
+                <div class="testimonial-author">
+                  <div class="testimonial-avatar">E</div>
+                  <div class="testimonial-info"><h4>Elena V.</h4><span>The Wild One Collection</span></div>
+                </div>
+              </div>
+
+              <div class="testimonial-card">
+                <div class="testimonial-stars">*****</div>
+                <p class="testimonial-text">"After my divorce, The Queen candle became my daily reminder that I am whole, sovereign, and worthy of my own devotion."</p>
+                <div class="testimonial-author">
+                  <div class="testimonial-avatar">D</div>
+                  <div class="testimonial-info"><h4>Diana L.</h4><span>The Queen Collection</span></div>
+                </div>
+              </div>
+
+              <div class="testimonial-card">
+                <div class="testimonial-stars">*****</div>
+                <p class="testimonial-text">"The scent lasts for hours after the candle is out. My whole apartment feels like a sanctuary now."</p>
+                <div class="testimonial-author">
+                  <div class="testimonial-avatar">N</div>
+                  <div class="testimonial-info"><h4>Nadia S.</h4><span>The Lover Collection</span></div>
+                </div>
+              </div>
+
+              <div class="testimonial-card">
+                <div class="testimonial-stars">*****</div>
+                <p class="testimonial-text">"I was skeptical about the 'ritual' aspect, but the guided practice that came with my candle genuinely shifted something in me."</p>
+                <div class="testimonial-author">
+                  <div class="testimonial-avatar">C</div>
+                  <div class="testimonial-info"><h4>Claire H.</h4><span>The Mystic Collection</span></div>
+                </div>
+              </div>
+
+              <div class="testimonial-card">
+                <div class="testimonial-stars">*****</div>
+                <p class="testimonial-text">"Worth every penny. This isn't a candle you burn mindlessly—it demands presence, and that's exactly what I needed."</p>
+                <div class="testimonial-author">
+                  <div class="testimonial-avatar">T</div>
+                  <div class="testimonial-info"><h4>Tatiana M.</h4><span>The Queen Collection</span></div>
+                </div>
+              </div>
+
+              <!-- Duplicate for seamless loop -->
+              <div class="testimonial-card">
+                <div class="testimonial-stars">*****</div>
+                <p class="testimonial-text">"I've never felt so seen by a product. The archetype quiz helped me understand myself better, and the scent... it's like it was made for my soul."</p>
+                <div class="testimonial-author">
+                  <div class="testimonial-avatar">A</div>
+                  <div class="testimonial-info"><h4>Amara K.</h4><span>The Mystic Collection</span></div>
+                </div>
+              </div>
+
+              <div class="testimonial-card">
+                <div class="testimonial-stars">*****</div>
+                <p class="testimonial-text">"The Wild One spoke to something untamed in me. Every time I light it, I remember that my fire doesn't need to be contained."</p>
+                <div class="testimonial-author">
+                  <div class="testimonial-avatar">E</div>
+                  <div class="testimonial-info"><h4>Elena V.</h4><span>The Wild One Collection</span></div>
+                </div>
+              </div>
+
+              <div class="testimonial-card">
+                <div class="testimonial-stars">*****</div>
+                <p class="testimonial-text">"After my divorce, The Queen candle became my daily reminder that I am whole, sovereign, and worthy of my own devotion."</p>
+                <div class="testimonial-author">
+                  <div class="testimonial-avatar">D</div>
+                  <div class="testimonial-info"><h4>Diana L.</h4><span>The Queen Collection</span></div>
+                </div>
+              </div>
+
+              <div class="testimonial-card">
+                <div class="testimonial-stars">*****</div>
+                <p class="testimonial-text">"The scent lasts for hours after the candle is out. My whole apartment feels like a sanctuary now."</p>
+                <div class="testimonial-author">
+                  <div class="testimonial-avatar">N</div>
+                  <div class="testimonial-info"><h4>Nadia S.</h4><span>The Lover Collection</span></div>
+                </div>
+              </div>
+
+              <div class="testimonial-card">
+                <div class="testimonial-stars">*****</div>
+                <p class="testimonial-text">"I was skeptical about the 'ritual' aspect, but the guided practice that came with my candle genuinely shifted something in me."</p>
+                <div class="testimonial-author">
+                  <div class="testimonial-avatar">C</div>
+                  <div class="testimonial-info"><h4>Claire H.</h4><span>The Mystic Collection</span></div>
+                </div>
+              </div>
+
+              <div class="testimonial-card">
+                <div class="testimonial-stars">*****</div>
+                <p class="testimonial-text">"Worth every penny. This isn't a candle you burn mindlessly—it demands presence, and that's exactly what I needed."</p>
+                <div class="testimonial-author">
+                  <div class="testimonial-avatar">T</div>
+                  <div class="testimonial-info"><h4>Tatiana M.</h4><span>The Queen Collection</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== FAQ SECTION ========== -->
+    <section class="section section-warm">
+      <div class="section-content">
+        <div style="text-align: center;">
+          <span class="section-label reveal">Questions & Answers</span>
+          <h2 class="section-title reveal reveal-delay-1">Frequently Asked</h2>
+        </div>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-header" onclick="toggleFaq(this)">
+              <h3 class="faq-title">When will FIRAELI officially launch?</h3>
+              <span class="faq-toggle"></span>
+            </button>
+            <div class="faq-body">
+              <p>We're putting the finishing touches on our first collection and expect to launch in early 2026. Join the Sacred Circle to be notified first and receive exclusive early access.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-header" onclick="toggleFaq(this)">
+              <h3 class="faq-title">What makes FIRAELI candles different?</h3>
+              <span class="faq-toggle"></span>
+            </button>
+            <div class="faq-body">
+              <p>FIRAELI is more than a candle—it's a ritual experience. Our sculptural vessels are designed to honor the feminine form, our scents are crafted around powerful archetypes, and each candle comes with guided rituals to deepen your practice.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-header" onclick="toggleFaq(this)">
+              <h3 class="faq-title">Are your candles natural and non-toxic?</h3>
+              <span class="faq-toggle"></span>
+            </button>
+            <div class="faq-body">
+              <p>Absolutely. We use 100% natural soy wax, lead-free cotton wicks, and premium fragrance oils that are phthalate-free. Your ritual space should be as pure as your intentions.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-header" onclick="toggleFaq(this)">
+              <h3 class="faq-title">What are the archetypes and how do I choose?</h3>
+              <span class="faq-toggle"></span>
+            </button>
+            <div class="faq-body">
+              <p>Our four archetypes—The Lover, The Mystic, The Queen, and The Wild One—represent different facets of feminine energy. Each has a unique scent profile and ritual guide. We'll offer an archetype quiz at launch to help you discover which resonates most.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-header" onclick="toggleFaq(this)">
+              <h3 class="faq-title">Do you ship internationally?</h3>
+              <span class="faq-toggle"></span>
+            </button>
+            <div class="faq-body">
+              <p>Yes! We believe every woman deserves access to sacred rituals. We'll ship worldwide, with special care packaging to ensure your vessel arrives in perfect condition.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== FINAL CTA SECTION ========== -->
+    <section class="section section-warm cta-section">
+      <div class="section-content">
+        <h2 class="cta-title fire-text reveal">Ready to Ignite?</h2>
+        <p class="cta-subtitle reveal reveal-delay-1">Join the Sacred Circle and be first to experience FIRAELI.</p>
+        <form class="cta-form reveal reveal-delay-2" id="ctaEmailForm">
+          <input type="email" class="cta-input" placeholder="Your email address" required id="ctaEmailInput">
+          <button type="submit" class="cta-button">Join Now</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+      <img src="images/Logo2 (2).png" alt="FIRAELI" class="footer-logo" />
+
+      <div class="footer-links">
+        <a href="#" class="footer-link">About</a>
+        <a href="#" class="footer-link">Contact</a>
+        <a href="#" class="footer-link">Privacy</a>
+        <a href="#" class="footer-link">Terms</a>
+      </div>
+
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="Pinterest">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M8 12c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4 4"/>
+            <path d="M9 17l1.5-6"/>
+          </svg>
+        </a>
+        <a href="#" aria-label="TikTok">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
+          </svg>
+        </a>
+      </div>
+
+      <p class="footer-copyright">&copy; 2025 FIRAELI. All rights reserved.</p>
+      <p class="footer-mantra">My pleasure is holy. My light is safe to shine.</p>
+    </footer>
+
+    <!-- Sensual Fire Animations Script -->
+    <script>
+      // Floating Embers System - Subtle fire particles
+      const embersContainer = document.getElementById('embersContainer');
+      const emberCount = 25; // Reduced amount
+
+      function createEmber() {
+        const ember = document.createElement('div');
+        ember.className = 'ember';
+
+        // Random horizontal position
+        ember.style.left = Math.random() * 100 + 'vw';
+
+        // Small sizes only (3-6px)
+        const size = 3 + Math.random() * 3;
+        ember.style.width = size + 'px';
+        ember.style.height = size + 'px';
+
+        // Random animation duration for organic feel
+        const duration = 8 + Math.random() * 6;
+        ember.style.animationDuration = duration + 's';
+
+        // Random delay so they don't all start together
+        ember.style.animationDelay = Math.random() * duration + 's';
+
+        // Color variation - orange tones only
+        const colorRand = Math.random();
+        let hue;
+        if (colorRand < 0.35) {
+          hue = '#C8A25D'; // Divine gold
+        } else if (colorRand < 0.6) {
+          hue = '#B5694F'; // Molten copper
+        } else if (colorRand < 0.8) {
+          hue = '#D4913D'; // Warm orange
+        } else {
+          hue = '#E8A84C'; // Bright amber
+        }
+
+        ember.style.background = `radial-gradient(circle, ${hue} 0%, transparent 70%)`;
+
+        embersContainer.appendChild(ember);
+
+        // Reposition on animation iteration
+        ember.addEventListener('animationiteration', () => {
+          ember.style.left = Math.random() * 100 + 'vw';
+        });
+      }
+
+      // Create initial embers - small only
+      for (let i = 0; i < emberCount; i++) {
+        setTimeout(() => {
+          createEmber();
+        }, i * 150);
+      }
+
+      // Occasionally add new embers to maintain count
+      setInterval(() => {
+        if (embersContainer.children.length < 30) {
+          createEmber();
+        }
+      }, 800);
+
+      // Add subtle parallax effect on mouse move for depth
+      document.addEventListener('mousemove', (e) => {
+        const moveX = (e.clientX - window.innerWidth / 2) * 0.01;
+        const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
+
+        embersContainer.style.transform = `translate(${moveX}px, ${moveY}px)`;
+      });
+
+      // Scroll Reveal Animation
+      const revealElements = document.querySelectorAll('.reveal');
+
+      const revealOnScroll = () => {
+        const windowHeight = window.innerHeight;
+        const revealPoint = 150;
+
+        revealElements.forEach(element => {
+          const elementTop = element.getBoundingClientRect().top;
+
+          if (elementTop < windowHeight - revealPoint) {
+            element.classList.add('active');
+          }
+        });
+      };
+
+      // Initial check
+      revealOnScroll();
+
+      // Throttled scroll listener for performance
+      let ticking = false;
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            revealOnScroll();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      });
+
+      // Smooth scroll for any anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+
+      // FAQ Accordion
+      function toggleFaq(btn) {
+        const item = btn.parentElement;
+        const isOpen = item.classList.contains('open');
+
+        // Close all
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+
+        // Open clicked if it was closed
+        if (!isOpen) {
+          item.classList.add('open');
+        }
+      }
+    </script>
 
     <!-- Supabase JS Client -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -564,6 +2742,65 @@
             messageEl.className = 'form-message';
             messageEl.textContent = '';
           }, 4000);
+        }
+      });
+
+      // CTA Form (bottom of page) - reuses Supabase logic
+      document.getElementById('ctaEmailForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        const email = document.getElementById('ctaEmailInput').value.trim().toLowerCase();
+        const submitBtn = this.querySelector('.cta-button');
+        const originalText = submitBtn.textContent;
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Joining...';
+
+        try {
+          const { data, error } = await supabase
+            .from('email_subscribers')
+            .insert([{ email: email, source: 'cta_section' }])
+            .select();
+
+          if (error) {
+            const isDuplicate = error.code === '23505' ||
+                               error.message?.toLowerCase().includes('duplicate') ||
+                               error.message?.toLowerCase().includes('unique');
+
+            if (isDuplicate) {
+              submitBtn.textContent = 'Already In!';
+            } else {
+              throw error;
+            }
+          } else {
+            // Send confirmation email
+            try {
+              await fetch('/api/send-confirmation-email', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: email })
+              });
+            } catch (emailError) {
+              console.log('Confirmation email could not be sent:', emailError);
+            }
+
+            submitBtn.textContent = 'Welcome!';
+            document.getElementById('ctaEmailInput').value = '';
+          }
+
+          setTimeout(function() {
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+          }, 4000);
+
+        } catch (error) {
+          console.error('Error:', error);
+          submitBtn.textContent = 'Try Again';
+          submitBtn.disabled = false;
+
+          setTimeout(function() {
+            submitBtn.textContent = originalText;
+          }, 3000);
         }
       });
     </script>
